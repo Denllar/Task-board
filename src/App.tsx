@@ -3,7 +3,7 @@ import Home from "./pages/Home/Home"
 import NotFound from './pages/NotFound/NotFound'
 import './App.css'
 
-function App() {
+const App: React.FC = () => {
   return (
     <>
       <Routes>

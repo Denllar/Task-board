@@ -1,13 +1,14 @@
 import React from 'react'
+import { setCount } from '../../redux/slices/firstSlice';
+import { useAppDispatch, useAppSelector } from '../../redux/hook';
 
-const Home = () => {
-    const [count, setCount] = React.useState(0);
+const Home: React.FC = () => {
+    const dispatch = useAppDispatch();
+    const {count} = useAppSelector(state=>state.firstSlice);
     return (
         <div>
-            {
-                count
-            }
-            <button onClick={()=>setCount(prev => prev+1)}>Жми!!!</button>
+            <p>{count}</p>
+            <button onClick={()=>dispatch(setCount())}>Жми!!!</button>
         </div>
     )
 }

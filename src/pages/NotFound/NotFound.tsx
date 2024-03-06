@@ -1,4 +1,4 @@
-const NotFound = () => {
+const NotFound: React.FC = () => {
   return (
     <div>NotFound</div>
   )
