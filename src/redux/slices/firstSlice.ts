@@ -2,10 +2,12 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface typeInitialState { //типизация начального состояния (строка 7)
     count: number,
+    isDigit: boolean,
 }
 
 const initialState: typeInitialState = {
     count: 0,
+    isDigit: true,
 }
 
 const firstSlice = createSlice({

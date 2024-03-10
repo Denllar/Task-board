@@ -3,7 +3,7 @@ import firstSlice from './slices/firstSlice';
 
 export const store = configureStore({
   reducer: {
-    firstSlice
+    firstSlice,
   }
 })
 
