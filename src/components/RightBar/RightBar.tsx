@@ -1,15 +1,18 @@
+import React from 'react';
+
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
+
 import style from './RightBar.module.scss'
 
 const RightBar: React.FC = () => {
-    const percentage = 77;
+    const [percentage, setPercentage] = React.useState(0);
     return (
         <div className={style.wrapper}>
             <div className={style.main}>
                 <div className={style.progress}>
                     <h2>Status</h2>
-                    <div style={{ width: 200, height: 200 }}>
+                    <div onClick={()=>setPercentage(prev=>prev+7)} style={{ width: 200, height: 200 }}>
                         <CircularProgressbar value={percentage} text={`${percentage}%`} styles={buildStyles({
                             rotation: 0,
                             strokeLinecap: 'round',

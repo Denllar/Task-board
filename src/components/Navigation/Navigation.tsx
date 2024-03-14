@@ -1,7 +1,14 @@
 const Navigation = () => {
+
+  const func = (a: String, b: Number) => {
+
+  }
+
+  func('dafd', 4);
+
   return (
     <div>
-
+{/* 
       <img src="" alt="logo"/>
 
       <nav>
@@ -13,7 +20,8 @@ const Navigation = () => {
         <img width={30} src="../../public/nav-img/setting.png" alt="home"/>
       </nav>
 
-      <img width={30} src="../../public/nav-img/out.png" alt="out"/>
+      <img width={30} src="../../public/nav-img/out.png" alt="out"/> */}
+
     </div>
   )
 }
