@@ -1,0 +1,66 @@
+.wrapper {
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 10px 5px 5px rgb(232, 231, 231);
+    border-radius: 15px;
+    margin-bottom: 15px;
+    margin-right: 15px;
+    width: 200px;
+    height: 100px;
+    .header{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 10px;
+        h2{
+            padding: 5px 17px;
+            background-color: #98cdff;
+            border-radius: 15px;
+            font-size: 14px;
+            font-weight: 700;
+            color: #3b72fd;
+        }
+    }
+
+    .main{
+        font-size: 14px;
+        opacity: 0.5;
+        margin-bottom: 10px;
+    }
+
+    .progress{
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .footer{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .clipMeassage{
+            display: flex;
+            .clip{
+                display: flex;
+                margin-right: 7px;
+                img{
+                    margin-right: 3px;
+                }
+                p{
+                    font-size: 15px;
+                    opacity: 0.5;
+                }
+            }
+    
+            .message{
+                display: flex;
+                img{
+                    margin-right: 3px;
+                }
+                p{
+                    font-size: 15px;
+                    opacity: 0.5;
+                }
+            }
+        }
+    }
+}

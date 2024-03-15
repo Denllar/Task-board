@@ -1,0 +1,29 @@
+.wrapper {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    .header{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 30px;
+        .filterImg{
+            display: flex;
+            align-items: center;
+            img{
+                margin-right: 12px;
+            }
+            .addTask{
+                border-radius: 15px;
+                background-color: #6d59ff;
+                border: none;
+                padding: 5px 17px;
+                color: #fff;
+            }
+        }
+    }
+
+    .card{
+        display: flex;
+    }
+}
