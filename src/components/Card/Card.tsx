@@ -15,7 +15,7 @@ const Card: React.FC = () => {
                 <p className={style.main}>Lorem ipsum dolor sit</p>
 
                 <div className={style.progress}>
-                    <progress onClick={()=>setCount(prev=>prev+7)} value={count} max="100" />
+                    <progress onClick={() => setCount(prev => prev + 7)} value={count} max="100" />
                     <p>{count}%</p>
                 </div>
 
@@ -27,7 +27,7 @@ const Card: React.FC = () => {
                             <p>3</p>
                         </div>
                         <div className={style.message}>
-                            <img width={10} style={{ opacity: 0.6 }} src="../../public/message2.png" alt="сообщение" />
+                            <img width={10} src="../../public/message2.png" alt="сообщение" />
                             <p>5</p>
                         </div>
                     </div>

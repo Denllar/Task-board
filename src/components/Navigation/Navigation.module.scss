@@ -1,0 +1,33 @@
+.wrapper{ 
+    background-color: rgb(42, 0, 82);
+    margin-right: 20px;
+    .main{
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 5px;
+
+        .logo{
+            margin-top: 15px;
+        }
+        nav{
+            display: flex;
+            flex-direction: column;
+            img{
+                cursor: pointer;
+                filter: invert(1); //красит в белый
+                &:not(:last-child){
+                    margin-bottom: 20px;
+                }
+            }
+        }
+    
+        .out{
+            cursor: pointer;
+            filter: invert(1); //красит в белый
+            margin-bottom: 15px;
+        }
+    }
+}

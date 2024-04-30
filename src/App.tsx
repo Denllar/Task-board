@@ -1,14 +1,23 @@
-import {Route, Routes} from 'react-router-dom'
-import Home from "./pages/Home/Home"
-import NotFound from './pages/NotFound/NotFound'
+import { Route, Routes } from 'react-router-dom'
 import './App.css'
+import { publicRoutes, privateRoutes } from './routes'
+import {auth} from "./firebase.ts";
+import {useAuthState} from "react-firebase-hooks/auth";
 
 const App: React.FC = () => {
+    const [toggleSignUp] = useAuthState(auth);
+    console.log(toggleSignUp);
   return (
     <>
       <Routes>
-        <Route path='/' element={<Home/>}></Route>
-        <Route path='*' element={<NotFound/>}></Route>
+        {
+            toggleSignUp ? privateRoutes.map(({ path, Component }) => (
+            <Route key={path} path={path} element={<Component/>}></Route>
+          )) :
+            publicRoutes.map(({ path, Component }) => (
+              <Route key={path} path={path} element={<Component/>}></Route>
+            ))
+        }
       </Routes>
     </>
   )

@@ -1,3 +1,9 @@
-.main {
+.wrapper{
     display: flex;
+    .home{
+        padding: 15px 10px;
+        .main{
+            display: flex;
+        }
+    }
 }

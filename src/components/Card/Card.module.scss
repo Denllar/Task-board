@@ -7,12 +7,14 @@
     margin-right: 15px;
     width: 200px;
     height: 100px;
-    .header{
+
+    .header {
         display: flex;
         align-items: center;
         justify-content: space-between;
         margin-bottom: 10px;
-        h2{
+
+        h2 {
             padding: 5px 17px;
             background-color: #98cdff;
             border-radius: 15px;
@@ -22,44 +24,53 @@
         }
     }
 
-    .main{
+    .main {
         font-size: 14px;
         opacity: 0.5;
         margin-bottom: 10px;
     }
 
-    .progress{
+    .progress {
         display: flex;
         justify-content: space-between;
-        p{
+
+        p {
             font-size: 14px;
         }
     }
 
-    .footer{
+
+    .footer {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        .clipMeassage{
+
+        .clipMeassage {
             display: flex;
-            .clip{
+
+            .clip {
                 display: flex;
                 margin-right: 7px;
-                img{
+
+                img {
                     margin-right: 3px;
                 }
-                p{
+
+                p {
                     font-size: 15px;
                     opacity: 0.5;
                 }
             }
-    
-            .message{
+
+            .message {
                 display: flex;
-                img{
+
+                img {
                     margin-right: 3px;
+                    opacity: 0.6
                 }
-                p{
+
+                p {
                     font-size: 15px;
                     opacity: 0.5;
                 }
