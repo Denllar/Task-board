@@ -16,11 +16,16 @@ const SignUp: React.FC = () => {
         } else if (password.length < 6) {
             alert("Длина пароля не менее 6 символов");
             return;
+        } else if (email.slice(email.length-10, email.length)!=="@gmail.com") {
+            alert("Формат почты некорректен");
+            return;
         }
         createUserWithEmailAndPassword(auth, email, password)
-            .catch((err)=>{
+            .then(()=>{
+            localStorage.setItem(`user_${email}`, email);
+        }).catch((err)=>{
                 console.log(err);
-                alert('Аккаунт уже существует либо некорректен формат почты');
+                alert('Аккаунт уже существует');
             })
     }
 
