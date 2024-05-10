@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom/client'
 
 import { store } from './redux/store.ts';
 import { Provider } from 'react-redux';
-import './firebase.ts'
+//import './firebase.ts'
 import App from './App.jsx';
 
 

@@ -1,15 +1,20 @@
 import React, {useState} from "react"
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import {auth} from "../../firebase.ts";
+// import { createUserWithEmailAndPassword } from "firebase/auth";
+// import {auth} from "../../firebase.ts";
 import {Link} from "react-router-dom";
 import {HOME} from "../../utils/consts.ts";
+import {useAppDispatch} from "../../redux/hook.ts";
+import {setCurrentName, setUser} from "../../redux/slices/userSlice.ts";
 
 const SignUp: React.FC = () => {
+    const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [copyPassword, setCopyPassword] = useState("");
 
-    const register = () => {
+    const dispatch = useAppDispatch();
+
+    const register = async () => {
         if (password !== copyPassword) {
             alert("Пароли не сходятся");
             return;
@@ -20,13 +25,31 @@ const SignUp: React.FC = () => {
             alert("Формат почты некорректен");
             return;
         }
-        createUserWithEmailAndPassword(auth, email, password)
-            .then(()=>{
-            localStorage.setItem(`user_${email}`, email);
-        }).catch((err)=>{
-                console.log(err);
-                alert('Аккаунт уже существует');
+        // createUserWithEmailAndPassword(auth, email, password)
+        //     .then(()=>{
+        //     localStorage.setItem(`user_${email}`, email);
+        // }).catch((err)=>{
+        //         console.log(err);
+        //         alert('Аккаунт уже существует');
+        //     })
+        const res = await fetch("https://d2e35694418f58f2.mokky.dev/register", {
+            method: "POST",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                fullName: name,
+                email: email,
+                password: password
             })
+        })
+        if (res.status !== 401){
+            dispatch(setUser(true));
+            dispatch(setCurrentName(name));
+        } else {
+            alert("Аккаунт уже существует");
+        }
     }
 
 
@@ -34,10 +57,13 @@ const SignUp: React.FC = () => {
         <div className="wrapper">
             <form>
                 <h2>Создание аккаунта</h2>
-                <input onChange={e=>setEmail(e.target.value)} value={email} type="email" placeholder='почта'/>
-                <input onChange={e=>setPassword(e.target.value)} value={password} type="password" placeholder='пароль'/>
-                <input onChange={e=>setCopyPassword(e.target.value)} value={copyPassword} type="password" placeholder='повтор пароля'/>
-                <Link to={HOME}><button onClick={register}>Создать</button></Link>
+                <input onChange={e => setName(e.target.value)} value={name} type="name" placeholder='имя'/>
+                <input onChange={e => setEmail(e.target.value)} value={email} type="email" placeholder='почта'/>
+                <input onChange={e => setPassword(e.target.value)} value={password} type="password" placeholder='пароль'/>
+                <input onChange={e => setCopyPassword(e.target.value)} value={copyPassword} type="password" placeholder='повтор пароля'/>
+                <Link to={HOME}>
+                    <button onClick={register}>Создать</button>
+                </Link>
             </form>
         </div>
     )
