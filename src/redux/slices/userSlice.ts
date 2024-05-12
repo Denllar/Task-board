@@ -3,11 +3,13 @@ import { createSlice } from "@reduxjs/toolkit";
 interface typeInitialState {
     toggleSignUp: boolean;
     currentName: string,
+    currentEmail: string,
 }
 
 const initialState: typeInitialState = {
     toggleSignUp: false,
     currentName: '',
+    currentEmail: '',
 }
 
 const userSlice = createSlice({
@@ -19,10 +21,13 @@ const userSlice = createSlice({
         },
         setCurrentName(state, action){
             state.currentName = action.payload;
-        }
+        },
+        setCurrentEmail(state, action){
+            state.currentEmail = action.payload;
+        },
     }
 })
 
 
-export const { setUser,setCurrentName } = userSlice.actions;
+export const { setUser,setCurrentName, setCurrentEmail } = userSlice.actions;
 export default userSlice.reducer;

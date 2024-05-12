@@ -2,8 +2,7 @@ import React, {useState} from "react"
 import {Link} from "react-router-dom";
 import {HOME} from "../../utils/consts.ts";
 import {useAppDispatch} from "../../redux/hook.ts";
-import {setCurrentName, setUser} from "../../redux/slices/userSlice.ts";
-import axios from "axios";
+import {setCurrentName, setUser, setCurrentEmail} from "../../redux/slices/userSlice.ts";
 // import { signInWithEmailAndPassword } from "firebase/auth";
 // import {auth} from "../../firebase.ts";
 
@@ -12,25 +11,27 @@ const SignIn: React.FC = () => {
     const [password, setPassword] = useState("");
 
     const dispatch = useAppDispatch();
-    const login = async () => {
-        const res = await fetch("https://d2e35694418f58f2.mokky.dev/auth", {
-            method: "POST",
-            headers: {
-                Accept: "application/json",
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                email: email,
-                password: password
-            })
-        });
 
-        console.log(res)
-        if (res.status === 201) {
-            const data = await axios(`https://d2e35694418f58f2.mokky.dev/users?email=${email}`);
+    const login = async () => {
+        try {
+            const res = await fetch("https://d2e35694418f58f2.mokky.dev/auth", {
+                method: "POST",
+                headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    email: email,
+                    password: password
+                })
+            });
+            const data = await res.json();
+            const name = data.data.fullName;
+            document.cookie = `${email}=${name}=${data.token}`;
             dispatch(setUser(true));
-            dispatch(setCurrentName(data.data[0].fullName));
-        } else {
+            dispatch(setCurrentName(name));
+            dispatch(setCurrentEmail(email))
+        } catch (err) {
             alert('Аккаунт не найден(');
         }
     }
