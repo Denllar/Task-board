@@ -1,18 +1,23 @@
 import {Link} from "react-router-dom";
 import style from "./Navigation.module.scss"
-//import {auth} from "../../firebase.ts";
 import {LOG_IN} from "../../utils/consts.ts";
 import {useAppDispatch, useAppSelector} from "../../redux/hook.ts";
-import {setCurrentEmail, setCurrentName, setUser} from "../../redux/slices/userSlice.ts";
+import {
+  setCurrentEmail,
+  setCurrentName,
+  setToggleCreateProject,
+  setToggleSignUp
+} from "../../redux/slices/userSlice.ts";
 
 const Navigation: React.FC = () => {
   const dispatch = useAppDispatch();
   const {currentEmail} = useAppSelector(state=>state.userSlice);
   const logOut = ()=>{
     document.cookie = `${currentEmail}=; Max-Age=-99999999;`;
-    dispatch(setUser(false));
+    dispatch(setToggleSignUp(false));
     dispatch(setCurrentName(''));
     dispatch(setCurrentEmail(''));
+    dispatch(setToggleCreateProject(true));
   }
 
   return (

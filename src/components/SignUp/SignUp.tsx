@@ -1,10 +1,8 @@
 import React, {useState} from "react"
-// import { createUserWithEmailAndPassword } from "firebase/auth";
-// import {auth} from "../../firebase.ts";
 import {Link} from "react-router-dom";
 import {HOME} from "../../utils/consts.ts";
 import {useAppDispatch} from "../../redux/hook.ts";
-import {setCurrentEmail, setCurrentName, setUser} from "../../redux/slices/userSlice.ts";
+import {setCurrentEmail, setCurrentName, setToggleSignUp, setUserId} from "../../redux/slices/userSlice.ts";
 
 const SignUp: React.FC = () => {
     const [name, setName] = useState("");
@@ -35,12 +33,15 @@ const SignUp: React.FC = () => {
                 body: JSON.stringify({
                     fullName: name,
                     email: email,
-                    password: password
+                    password: password,
+                    currentProjectId: null,
                 })
             })
             const data = await res.json();
-            document.cookie = `${email}=${name}=${data.token}`;
-            dispatch(setUser(true));
+            console.log(data);
+            document.cookie = `${email}=${name}=${data.data.id}=${data.token}`;
+            dispatch(setToggleSignUp(true));
+            dispatch(setUserId(data.data.id));
             dispatch(setCurrentName(name));
             dispatch(setCurrentEmail(email))
         } catch(err){

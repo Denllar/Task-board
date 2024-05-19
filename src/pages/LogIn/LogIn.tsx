@@ -2,7 +2,7 @@ import React from 'react'
 import SignUp from "../../components/SignUp/SignUp.tsx";
 import SignIn from "../../components/SignIn/SignIn.tsx";
 import {useAppDispatch} from "../../redux/hook.ts";
-import {setCurrentEmail, setCurrentName, setUser} from "../../redux/slices/userSlice.ts";
+import {setCurrentEmail, setCurrentName, setToggleSignUp, setUserId} from "../../redux/slices/userSlice.ts";
 
 const LogIn: React.FC = () => {
     const [toggleSign, setToggleSign] = React.useState(true);
@@ -11,7 +11,8 @@ const LogIn: React.FC = () => {
     React.useEffect( ()=>{
         if (document.cookie){
             const loggedInCookieArr = document.cookie.split('=');
-            dispatch(setUser(true));
+            dispatch(setToggleSignUp(true));
+            dispatch(setUserId(loggedInCookieArr[2]));
             dispatch(setCurrentName(loggedInCookieArr[1]));
             dispatch(setCurrentEmail(loggedInCookieArr[0]));
         }
