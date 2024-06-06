@@ -43,7 +43,7 @@ const SignUp: React.FC = () => {
             dispatch(setToggleSignUp(true));
             dispatch(setUserId(data.data.id));
             dispatch(setCurrentName(name));
-            dispatch(setCurrentEmail(email))
+            dispatch(setCurrentEmail(email));
         } catch(err){
             alert("Аккаунт уже существует");
         }

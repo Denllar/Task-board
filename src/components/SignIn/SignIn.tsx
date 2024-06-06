@@ -24,13 +24,12 @@ const SignIn: React.FC = () => {
                 })
             });
             const data = await res.json();
-            console.log(data);
             const name = data.data.fullName;
             document.cookie = `${email}=${name}=${data.data.id}=${data.token}`;
             dispatch(setToggleSignUp(true));
             dispatch(setUserId(data.data.id));
             dispatch(setCurrentName(name));
-            dispatch(setCurrentEmail(email))
+            dispatch(setCurrentEmail(email));
         } catch (err) {
             alert('Аккаунт не найден(');
         }

@@ -1,16 +1,18 @@
 .wrapper{ 
     background-color: rgb(42, 0, 82);
-    margin-right: 20px;
+    padding: 0 5px;
+    display: flex;
+    position: absolute;
+    height: 100%;
     .main{
-        height: 100vh;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
         align-items: center;
-        padding: 0 5px;
+        justify-content: space-between;
 
-        .logo{
+        h2{
             margin-top: 15px;
+            color: white;
         }
         nav{
             display: flex;

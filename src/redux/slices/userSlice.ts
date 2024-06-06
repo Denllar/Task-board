@@ -4,7 +4,7 @@ import { createSlice } from "@reduxjs/toolkit";
 interface typeInitialState {
     toggleSignUp: boolean;
     toggleCreateProject: boolean,
-    openProj: null | number,
+    currentProjectId: null | number,
     userId: number | null,
     currentName: string,
     currentEmail: string,
@@ -13,7 +13,7 @@ interface typeInitialState {
 const initialState: typeInitialState = {
     toggleSignUp: false,
     toggleCreateProject: true,
-    openProj: null,
+    currentProjectId: null,
     userId: null,
     currentName: '',
     currentEmail: '',
@@ -29,8 +29,8 @@ const userSlice = createSlice({
         setToggleCreateProject(state, action){
             state.toggleCreateProject = action.payload;
         },
-        setOpenProj(state, action){
-            state.openProj = action.payload;
+        setCurrentProjectId(state, action){
+            state.currentProjectId = action.payload;
         },
         setUserId(state, action){
             state.userId = action.payload;
@@ -45,5 +45,5 @@ const userSlice = createSlice({
 })
 
 
-export const { setToggleSignUp, setToggleCreateProject, setOpenProj, setUserId, setCurrentName, setCurrentEmail } = userSlice.actions;
+export const { setToggleSignUp, setToggleCreateProject, setCurrentProjectId, setUserId, setCurrentName, setCurrentEmail } = userSlice.actions;
 export default userSlice.reducer;

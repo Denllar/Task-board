@@ -25,16 +25,17 @@ const Header = () => {
 
     return (
         <div className={style.wrapper}>
-            {
-                toggleCreateProject ? <CreateProject/> :
-                    <div className={style.left}>
-                        <img className={style.menu} width={20} src="./public/menu.png" alt="menu"/>
-                        <div className={style.search}>
-                            <img width={20} src='../../public/magnifier.png' alt='magnifier'/>
-                            <input placeholder='Search'/>
-                        </div>
-                    </div>
-            }
+            <CreateProject/>
+            {/*{*/}
+            {/*    toggleCreateProject ? <CreateProject/> :*/}
+            {/*        <div className={style.left}>*/}
+            {/*            <img className={style.menu} width={20} src="./public/menu.png" alt="menu"/>*/}
+            {/*            <div className={style.search}>*/}
+            {/*                <img width={20} src='../../public/magnifier.png' alt='magnifier'/>*/}
+            {/*                <input placeholder='Search'/>*/}
+            {/*            </div>*/}
+            {/*        </div>*/}
+            {/*}*/}
 
             <div className={style.right}>
                 <img width={20} src="./public/notification.png" alt="notification"/>

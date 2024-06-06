@@ -2,12 +2,8 @@ import {Link} from "react-router-dom";
 import style from "./Navigation.module.scss"
 import {LOG_IN} from "../../utils/consts.ts";
 import {useAppDispatch, useAppSelector} from "../../redux/hook.ts";
-import {
-  setCurrentEmail,
-  setCurrentName,
-  setToggleCreateProject,
-  setToggleSignUp
-} from "../../redux/slices/userSlice.ts";
+import {setCurrentEmail, setCurrentName, setToggleCreateProject, setToggleSignUp, setCurrentProjectId} from "../../redux/slices/userSlice.ts";
+import {setNameProj, setDescriptionProj} from "../../redux/slices/modalSlice.ts";
 
 const Navigation: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -18,12 +14,16 @@ const Navigation: React.FC = () => {
     dispatch(setCurrentName(''));
     dispatch(setCurrentEmail(''));
     dispatch(setToggleCreateProject(true));
+    dispatch(setCurrentProjectId(null));
+
+    dispatch(setNameProj(''));
+    dispatch(setDescriptionProj(''));
   }
 
   return (
     <div className={style.wrapper}>
       <div className={style.main}>
-        <img className={style.logo} src="" alt="logo"/>
+        <h2>Task<br/>Board</h2>
 
         <nav>
           <img width={20} src="../../public/nav-img/home.png" alt="home"/>

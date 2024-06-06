@@ -1,11 +1,14 @@
 .wrapper{
     display: flex;
+    max-width: 1500px;
     .home{
+        display: flex;
+        flex-direction: column;
         width: 100%;
-        padding: 15px 10px;
+        margin: 15px 30px;
+        margin-left: 100px;
         .main{
             display: flex;
-            height: 90%;
         }
     }
 }

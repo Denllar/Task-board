@@ -1,9 +1,8 @@
 import { Route, Routes } from 'react-router-dom'
 import './App.css'
 import { publicRoutes, privateRoutes } from './routes'
-//import {auth} from "./firebase.ts";
+
 import {useAppSelector} from "./redux/hook.ts";
-//import {useAuthState} from "react-firebase-hooks/auth";
 
 const App: React.FC = () => {
     const {toggleSignUp} = useAppSelector(state=>state.userSlice);
