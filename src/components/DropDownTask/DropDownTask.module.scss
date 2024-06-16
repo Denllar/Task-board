@@ -1,0 +1,16 @@
+.modal__content{
+  height: 60%;
+  position: absolute;
+  top: 150px;
+  z-index: 9;
+  border: 1px solid #000;
+  border-radius: 1vw;
+  padding: 2vw;
+  background-color: rgb(204, 203, 203);
+  p{
+    display: flex;
+    justify-content: right;
+    font-size: 15px;
+    cursor: pointer;
+  }
+}

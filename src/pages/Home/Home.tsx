@@ -5,16 +5,15 @@ import Main from '../../components/Main/Main';
 import Navigation from '../../components/Navigation/Navigation';
 import Header from '../../components/Header/Header';
 import Modal from "../../components/CreateProject/Modal.tsx";
-import TaskModal from "../../components/TaskModal/TaskModal.tsx";
 import {useAppDispatch, useAppSelector} from "../../redux/hook.ts";
 import { setCurrentProjectId} from "../../redux/slices/userSlice.ts";
 import {setNameProj, setDescriptionProj} from "../../redux/slices/modalSlice.ts";
 
 import axios from "axios";
+import {fetchTasks} from "../../redux/slices/taskSlice.ts";
 
 const Home: React.FC = () => {
     const { openModal } = useAppSelector(state => state.modalSlice);
-    const { openTaskModal } = useAppSelector(state => state.taskSlice);
     const { toggleCreateProject, userId } = useAppSelector(state => state.userSlice);
     const dispatch = useAppDispatch();
 
@@ -27,6 +26,8 @@ const Home: React.FC = () => {
                 dispatch(setNameProj(dataProj.data.name));
                 dispatch(setDescriptionProj(dataProj.data.description));
             })();
+            dispatch(fetchTasks());
+
         } catch (err){
             console.error(err);
         }
@@ -47,7 +48,7 @@ const Home: React.FC = () => {
 
             </main>
             {
-                openModal && <Modal/> || openTaskModal && <TaskModal/>
+                openModal && <Modal/>
             }
 
         </div>

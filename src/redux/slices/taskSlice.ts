@@ -25,7 +25,7 @@ export const fetchTasks = createAsyncThunk(
 
 
 interface typeInitialState {
-    openTaskModal: boolean,
+    isOpenTaskModal: boolean,
     nameTask: string,
     descriptionTask: string,
     status: 'loading' | 'success' | 'error',
@@ -36,7 +36,7 @@ interface typeInitialState {
 }
 
 const initialState: typeInitialState = {
-    openTaskModal: false,
+    isOpenTaskModal: false,
     nameTask: '',
     descriptionTask: '',
     status: Status.LOADING,
@@ -50,8 +50,8 @@ const taskSlice = createSlice({
     name: 'taskSlice',
     initialState,
     reducers: {
-        setOpenModal(state, action){
-            state.openTaskModal = action.payload;
+        setIsOpenTaskModal(state, action){
+            state.isOpenTaskModal = action.payload;
         },
         setNameTask(state, action){
             state.nameTask = action.payload;
@@ -64,8 +64,9 @@ const taskSlice = createSlice({
             builder.addCase(fetchTasks.pending, (state) => {
                 state.status = Status.LOADING;
             }),
-            builder.addCase(fetchTasks.fulfilled, (state) => {
+            builder.addCase(fetchTasks.fulfilled, (state, action) => {
                 state.status = Status.SUCCESS;
+                state.watingTrack = action.payload;
             }),
             builder.addCase(fetchTasks.rejected, (state) => {
                 state.status = Status.ERROR;
@@ -74,5 +75,5 @@ const taskSlice = createSlice({
 })
 
 
-export const { setOpenModal, setNameTask, setDescriptionTask } = taskSlice.actions;
+export const { setIsOpenTaskModal, setNameTask, setDescriptionTask } = taskSlice.actions;
 export default taskSlice.reducer;

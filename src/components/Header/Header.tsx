@@ -7,7 +7,7 @@ import axios from "axios";
 
 const Header = () => {
     const dispatch = useAppDispatch();
-    const { toggleCreateProject, currentName, userId } = useAppSelector(state => state.userSlice);
+    const { currentName, userId } = useAppSelector(state => state.userSlice);
     const {openModal} = useAppSelector(state=>state.modalSlice);
     React.useEffect(()=>{
         try {
